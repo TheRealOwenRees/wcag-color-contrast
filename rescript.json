@@ -1,7 +1,8 @@
 {
   "name": "wcag-color-contrast",
+  "namespace": true,
   "sources": [
-    { "dir": "src", "subdirs": true },
+    { "dir": "src", "subdirs": true, "public": ["WcagColorContrast"] },
     { "dir": "tests", "subdirs": true, "type": "dev" }
   ],
   "package-specs": {

@@ -1,14 +1,11 @@
 // Entrypoint
 
-type colorFormat =
-  | RGB
-  | HEX
-  | HSL
-  | HSV
-
-// take string of color eg. #ffffff or rgb(255,255,255) and pass to relevant processes
-
 // get the type of color it is eg HEX, RGB, HSV, HSL
+let format = (string: string): option<Types.colorFormat> => {
+ ColorFormat.getColorFormat(string)
+}
+
+
 
 // get the values from inside the color string
 

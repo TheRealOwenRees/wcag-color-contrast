@@ -1,15 +1,32 @@
 {
   "name": "wcag-color-contrast",
   "version": "0.0.1",
+  "type": "module",
+  "main": "src/WcagColorContrast.res.mjs",
+  "module": "src/WcagColorContrast.res.mjs",
+  "exports": {
+    ".": "./src/WcagColorContrast.res.mjs"
+  },
+  "files": [
+    "src/**/*.res",
+    "src/**/*.res.js",
+    "src/**/*.res.mjs",
+    "rescript.json"
+  ],
   "scripts": {
     "test": "vitest",
     "test:watch": "vitest --watch",
     "res:build": "rescript",
     "res:clean": "rescript clean",
-    "res:dev": "rescript watch"
+    "res:dev": "rescript watch",
+    "bundle": "esbuild src/WcagColorContrast.res.mjs --bundle --minify --format=esm --outfile=dist/index.bundle.js",
+    "build": "npm run res:build && npm run bundle"
   },
   "keywords": [
-    "rescript"
+    "rescript",
+    "wcag",
+    "color",
+    "contrast"
   ],
   "author": "",
   "license": "MIT",
@@ -17,6 +34,7 @@
     "rescript": "12.1.0"
   },
   "devDependencies": {
+    "esbuild": "^0.27.2",
     "vitest": "^4.0.18"
   }
 }
