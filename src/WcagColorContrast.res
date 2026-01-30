@@ -5,11 +5,12 @@ let format = (string: string): option<Types.colorFormat> => {
  ColorFormat.getColorFormat(string)
 }
 
-
-
 // get the values from inside the color string
+let values = (string: string, format: option<Types.colorFormat>): option<Types.colorValue> => {
+  ColorValues.extract(string, format)
+}
 
-// get the RGB equivalent
+// get the RGB equivalent -> convert to RGBA
 
 // check 2 colours and compare for luminance figure
 
