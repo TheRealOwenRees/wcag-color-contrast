@@ -1,0 +1,22 @@
+{
+  "name": "wcag-color-contrast",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "res:build": "rescript",
+    "res:clean": "rescript clean",
+    "res:dev": "rescript watch"
+  },
+  "keywords": [
+    "rescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "rescript": "12.1.0"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
+}
