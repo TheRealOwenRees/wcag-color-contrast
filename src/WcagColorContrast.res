@@ -20,16 +20,34 @@ let rgba = s => {
   }
 }
 
-// RGB values normalized on 0-1 scale
-let normalizedRgba = s => RGB.rgbaToNormalized(rgba(s))
+let backgroundColorFlattenedAlpha = s => {
+  s
+  ->rgba
+  ->RGB.rgbaToNormalized
+  ->RGB.flattenAlpha
+}
 
-// flatten alpha
-let flattenedRgb = s => RGB.flattenAlpha(normalizedRgba(s))
+let backgroundColor = flattenedAlpha => flattenedAlpha->RGB.toLinearRGB
 
-// linearize to lRGB
-let linearRGB = s => RGB.toLinearRGB(flattenedRgb(s))
+let foregroundColor = (s, bgObj: option<Types.normalizedRgbObj>) => {
+  s
+  ->RGB.rgbaToNormalized
+  ->RGB.flattenAlpha(~backgroundColor=?bgObj)
+  ->RGB.toLinearRGB
+}
 
 // calculate luminance
+let result = (s1, s2) => {
+  let bgFlatAlpha = backgroundColorFlattenedAlpha(s1)
+  let bgLinearRGB = backgroundColor(bgFlatAlpha)
+  let fgLinearRGB = foregroundColor(s2, bgFlatAlpha)
+
+  let bgRelativeLuminance = RGB.relativeLuminance(bgLinearRGB)
+  let fgRelativeLuminance = RGB.relativeLuminance(fgLinearRGB)
+  (bgRelativeLuminance, fgRelativeLuminance)
+}
+
+Console.log(result)
 
 // check 2 colours and compare for luminance figure
 
