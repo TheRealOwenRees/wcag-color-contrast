@@ -2,11 +2,11 @@
 
 // get the type of color it is eg HEX, RGB, HSV, HSL
 let format = (string: string): option<Types.colorFormat> => {
- ColorFormat.getColorFormat(string)
+  ColorFormat.getColorFormat(string)
 }
 
 // get the values from inside the color string
-let values = (string: string, format: option<Types.colorFormat>): option<Types.colorValue> => {
+let values = (string: string, format: option<Types.colorFormat>): option<Types.colorValueObj> => {
   ColorValues.extract(string, format)
 }
 

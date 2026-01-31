@@ -3,36 +3,12 @@
 
 function extract(colorString, format) {
   let s = colorString.trim();
-  if (format !== undefined) {
-    if (format === "HEX") {
-      if (!(s.length >= 4 && "#".startsWith(s))) {
-        return;
-      }
-      let hex = s.slice(1);
-      return {
-        TAG: "HEX",
-        _0: hex
-      };
-    }
-    throw {
-      RE_EXN_ID: "Match_failure",
-      _1: [
-        "ColorValues.res",
-        4,
-        2
-      ],
-      Error: new Error()
+  if (format !== undefined && format === "HEX" && s.length >= 4 && s.startsWith("#")) {
+    return {
+      format: "HEX",
+      value: s.slice(1)
     };
   }
-  throw {
-    RE_EXN_ID: "Match_failure",
-    _1: [
-      "ColorValues.res",
-      4,
-      2
-    ],
-    Error: new Error()
-  };
 }
 
 export {
