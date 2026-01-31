@@ -1,16 +1,22 @@
 // Entrypoint
 
 // get the type of color it is eg HEX, RGB, HSV, HSL
-let format = (string: string): option<Types.colorFormat> => {
-  ColorFormat.getColorFormat(string)
-}
+let format = string => ColorFormat.getColorFormat(string)
 
 // get the values from inside the color string
-let values = (string: string, format: option<Types.colorFormat>): option<Types.colorValueObj> => {
-  ColorValues.extract(string, format)
-}
+let values = (string, format) => ColorValues.extract(string, format)
 
-// get the RGB equivalent -> convert to RGBA
+let rgb = s => {
+  switch format(s) {
+  | None => None
+  | Some(fmt) =>
+    switch values(s, Some(fmt)) {
+    | None => None
+    | Some({format: Types.HEX, value: hex}) => HexToRgb.hexToRgb(hex)
+    // | Some({format: Types.RGB, value: {r, g, b, a}}) => Some({r, g, b, a})
+    }
+  }
+}
 
 // check 2 colours and compare for luminance figure
 

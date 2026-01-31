@@ -14,3 +14,10 @@ type colorValueObj = {
   format: colorFormat,
   value: string,
 }
+
+type rgbaObj = {
+  r: int,
+  g: int,
+  b: int,
+  a: float,
+}
