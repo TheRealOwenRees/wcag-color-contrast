@@ -12,13 +12,24 @@ let rgba = s => {
   | None => None
   | Some(fmt) =>
     switch values(s, Some(fmt)) {
-    | None => None
     | Some({format: HEX, value: HEX(hex)}) => HexToRgb.hexToRgb(hex)
     | Some({format: Types.RGBA, value: RGBA({r, g, b, a})}) => Some({r, g, b, a})
+    | None => None
     | _ => None
     }
   }
 }
+
+// RGB values normalized on 0-1 scale
+let normalizedRgba = s => RGB.rgbaToNormalized(rgba(s))
+
+// flatten alpha
+let flattenedRgb = s => RGB.flattenAlpha(normalizedRgba(s))
+
+// linearize to lRGB
+let linearRGB = s => RGB.toLinearRGB(flattenedRgb(s))
+
+// calculate luminance
 
 // check 2 colours and compare for luminance figure
 

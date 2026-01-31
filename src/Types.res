@@ -1,5 +1,5 @@
 type colorFormat =
-  | RGBA
+  | RGBA // sRGBA
   | HEX
 // | HSL
 // | HSV
@@ -9,6 +9,19 @@ type rgbaObj = {
   g: int,
   b: int,
   a: float,
+}
+
+type normalizedRgbaObj = {
+  r: float,
+  g: float,
+  b: float,
+  a: float,
+}
+
+type normalizedRgbObj = {
+  r: float,
+  g: float,
+  b: float,
 }
 
 type colorValue =

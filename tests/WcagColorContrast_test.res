@@ -17,3 +17,14 @@ describe("HEX to RGBA", () => {
     }
   })
 })
+
+describe("Compare two colors", () => {
+  test("detect contrast ratio", () => {
+    let color1 = rgba("#ffffffee")
+    let color2 = rgba("#000000")
+    let normalized = RGB.rgbaToNormalized(color1)
+    let flattened = RGB.flattenAlpha(normalized)
+    let linear = RGB.toLinearRGB(flattened)
+    Console.log((color1, color2, linear))
+  })
+})

@@ -32,7 +32,7 @@ let hexToRgb = (value: string): option<Types.rgbaObj> => {
     let r = hexToInt(String.substring(~start=0, ~end=2, normalized))->Option.getOr(0)
     let g = hexToInt(String.substring(~start=2, ~end=4, normalized))->Option.getOr(0)
     let b = hexToInt(String.substring(~start=4, ~end=6, normalized))->Option.getOr(0)
-    let aVal = hexToInt(String.substring(~start=6, ~end=8, normalized))->Option.getOr(0)
+    let aVal = hexToInt(String.substring(~start=6, ~end=8, normalized))->Option.getOr(1)
     let a = Int.toFloat(aVal) /. 255.0 // Normalize hex alpha to 0-1
     Some({r, g, b, a})
   } else {
