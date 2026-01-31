@@ -6,6 +6,7 @@ let format = string => ColorFormat.getColorFormat(string)
 // get the values from inside the color string
 let values = (string, format) => ColorValues.extract(string, format)
 
+// return an rgba color object for passed in colour data
 let rgba = s => {
   switch format(s) {
   | None => None
@@ -14,6 +15,7 @@ let rgba = s => {
     | None => None
     | Some({format: HEX, value: HEX(hex)}) => HexToRgb.hexToRgb(hex)
     | Some({format: Types.RGBA, value: RGBA({r, g, b, a})}) => Some({r, g, b, a})
+    | _ => None
     }
   }
 }
