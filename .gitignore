@@ -6,3 +6,7 @@
 /dist/
 /src/**/*.res.mjs
 /tests/**/*.res.mjs
+*.tgz
+
+/smoke-test
+smoke-test.mjs

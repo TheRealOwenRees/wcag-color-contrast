@@ -8,13 +8,13 @@ importers:
 
   .:
     dependencies:
-      '@rescript/runtime':
-        specifier: 12.1.0
-        version: 12.1.0
       rescript:
         specifier: 12.1.0
         version: 12.1.0
     devDependencies:
+      '@rescript/runtime':
+        specifier: 12.1.0
+        version: 12.1.0
       esbuild:
         specifier: ^0.27.2
         version: 0.27.2
