@@ -1,5 +1,5 @@
 // Entrypoint
-type isCompliantObj = {"AAA": bool, "AA": bool}
+type isCompliantObj = {"WCAG 2.x": {"AAA": bool, "AA": bool}}
 
 // return an rgba color object for passed in colour data
 let toRgba = s => {
@@ -37,5 +37,5 @@ let isCompliant = (ratio, fontSize, bold) => {
   let aaa = ratio >= 7.0 || (ratio >= 4.5 && largeText)
   let aa = ratio >= 4.5 || (ratio >= 3.0 && largeText)
 
-  {"AAA": aaa, "AA": aa}
+  {"WCAG 2.x": {"AAA": aaa, "AA": aa}}
 }
