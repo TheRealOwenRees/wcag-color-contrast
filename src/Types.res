@@ -1,8 +1,6 @@
 type colorFormat =
-  | RGBA // sRGBA
+  | RGBA
   | HEX
-// | HSL
-// | HSV
 
 type rgbaObj = {
   r: int,

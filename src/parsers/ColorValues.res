@@ -28,7 +28,5 @@ let extract = (colorString: string, format: option<Types.colorFormat>): option<
         value: RGBA({r, g, b, a}),
       })
     }
-  // | Some(HSL) => None
-  // | Some(HSV) => None
   }
 }
