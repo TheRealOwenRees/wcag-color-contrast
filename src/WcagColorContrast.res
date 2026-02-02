@@ -1,4 +1,5 @@
 // Entrypoint
+type isCompliantObj = {"AAA": bool, "AA": bool}
 
 // get the type of color it is eg HEX, RGB, HSV, HSL
 let format = string => ColorFormat.getColorFormat(string)
@@ -7,7 +8,7 @@ let format = string => ColorFormat.getColorFormat(string)
 let values = (string, format) => ColorValues.extract(string, format)
 
 // return an rgba color object for passed in colour data
-let rgba = s => {
+let toRgba = s => {
   switch format(s) {
   | None => None
   | Some(fmt) =>
@@ -20,35 +21,19 @@ let rgba = s => {
   }
 }
 
-let backgroundColorFlattenedAlpha = s => {
-  s
-  ->rgba
-  ->RGB.rgbaToNormalized
-  ->RGB.flattenAlpha
-}
-
-let backgroundColor = flattenedAlpha => flattenedAlpha->RGB.toLinearRGB
-
-let foregroundColor = (s, bgObj: option<Types.normalizedRgbObj>) => {
-  s
-  ->RGB.rgbaToNormalized
-  ->RGB.flattenAlpha(~backgroundColor=?bgObj)
-  ->RGB.toLinearRGB
-}
-
-// calculate luminance
-let result = (s1, s2) => {
-  let bgFlatAlpha = backgroundColorFlattenedAlpha(s1)
-  let bgLinearRGB = backgroundColor(bgFlatAlpha)
-  let fgLinearRGB = foregroundColor(s2, bgFlatAlpha)
-
-  let bgRelativeLuminance = RGB.relativeLuminance(bgLinearRGB)
-  let fgRelativeLuminance = RGB.relativeLuminance(fgLinearRGB)
-  (bgRelativeLuminance, fgRelativeLuminance)
-}
-
-Console.log(result)
-
 // check 2 colours and compare for luminance figure
+let getContrastRatio = (l1, l2) => {
+  let max = Math.max(l1, l2) +. 0.05
+  let min = Math.min(l1, l2) +. 0.05
+  max /. min
+}
 
-// check against font size to see if compliant
+// return an object of bools showing AAA and AA compliance
+let isCompliant = (ratio, fontSize, bold) => {
+  let largeText = fontSize >= 24 || (fontSize >= 18 && bold)
+
+  let aaa = ratio >= 7.0 || (ratio >= 4.5 && largeText)
+  let aa = ratio >= 4.5 || (ratio >= 3.0 && largeText)
+
+  {"AAA": aaa, "AA": aa}
+}
