@@ -1,6 +1,6 @@
 # WCAG Color Constrast
 
-## A zero dependency library to check for WCAG complaint color contrasts.
+## A zero dependency library to check for WCAG compliant color contrasts.
 
 ## Usage
 
