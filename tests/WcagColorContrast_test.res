@@ -23,13 +23,7 @@ describe("Color ratio", () => {
     let black = "#000000"
     let white = "#ffffff"
 
-    let bgFlattenedAlpha = white->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha
-    let fgFlattenedAlpha = black->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha
-
-    let bgRelativeLuminance = bgFlattenedAlpha->RGB.relativeLuminance
-    let fgRelativeLuminance = fgFlattenedAlpha->RGB.relativeLuminance
-
-    let contrastRatio = getContrastRatio(bgRelativeLuminance, fgRelativeLuminance)
+    let contrastRatio = getContrastRatio(black, white)
 
     switch contrastRatio {
     | 21.0 => ()

@@ -1,14 +1,11 @@
 // Entrypoint
 type isCompliantObj = {"AAA": bool, "AA": bool}
 
-// get the type of color it is eg HEX, RGB, HSV, HSL
-let format = string => ColorFormat.getColorFormat(string)
-
-// get the values from inside the color string
-let values = (string, format) => ColorValues.extract(string, format)
-
 // return an rgba color object for passed in colour data
 let toRgba = s => {
+  let format = string => ColorFormat.getColorFormat(string)
+  let values = (string, format) => ColorValues.extract(string, format)
+
   switch format(s) {
   | None => None
   | Some(fmt) =>
@@ -22,7 +19,12 @@ let toRgba = s => {
 }
 
 // check 2 colours and compare for luminance figure
-let getContrastRatio = (l1, l2) => {
+let getContrastRatio = (background, foreground) => {
+  let bgFlattened = background->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha
+  let fgFlattened = foreground->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha
+  let l1 = bgFlattened->RGB.toLinearRGB->RGB.relativeLuminance
+  let l2 = fgFlattened->RGB.toLinearRGB->RGB.relativeLuminance
+
   let max = Math.max(l1, l2) +. 0.05
   let min = Math.min(l1, l2) +. 0.05
   max /. min
