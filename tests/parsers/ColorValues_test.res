@@ -7,8 +7,6 @@ describe("RGB", () => {
   test("detect standard RGB", () => {
     let result = extract("rgb(255, 255, 255)", Some(RGBA))
 
-    Console.log(result)
-
     switch result {
     | Some({format: RGBA, value: RGBA({r: 255, g: 255, b: 255, a: 1.0})}) => ()
     | _ => throw(Failure("Expected Some({format: RGB, value: \"ffffff\"}"))

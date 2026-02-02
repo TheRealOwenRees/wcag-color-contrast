@@ -14,7 +14,7 @@ let toRgba = s => {
   | Some(fmt) =>
     switch values(s, Some(fmt)) {
     | Some({format: HEX, value: HEX(hex)}) => HexToRgb.hexToRgb(hex)
-    | Some({format: Types.RGBA, value: RGBA({r, g, b, a})}) => Some({r, g, b, a})
+    | Some({format: RGBA, value: RGBA({r, g, b, a})}) => Some({r, g, b, a})
     | None => None
     | _ => None
     }
