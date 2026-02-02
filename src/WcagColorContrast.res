@@ -31,7 +31,7 @@ let getContrastRatio = (background, foreground) => {
 }
 
 // return an object of bools showing AAA and AA compliance
-let isCompliant = (ratio, fontSize, bold) => {
+let isCompliant = (~ratio, ~fontSize=16, ~bold=false) => {
   let largeText = fontSize >= 24 || (fontSize >= 18 && bold)
 
   let aaa = ratio >= 7.0 || (ratio >= 4.5 && largeText)
