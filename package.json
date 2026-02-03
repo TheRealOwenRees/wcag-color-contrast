@@ -16,6 +16,15 @@
     "./dist/index.js",
     "README.md"
   ],
+  "keywords": [
+    "rescript",
+    "wcag",
+    "color",
+    "contrast"
+  ],
+  "engines": {
+    "node": "^22"
+  },
   "scripts": {
     "test": "vitest",
     "test:watch": "vitest --watch",
@@ -25,12 +34,6 @@
     "bundle": "esbuild src/WcagColorContrast.res.mjs --bundle --minify --format=esm --outfile=dist/index.mjs",
     "build": "npm run res:clean && npm run res:build && npm run bundle"
   },
-  "keywords": [
-    "rescript",
-    "wcag",
-    "color",
-    "contrast"
-  ],
   "devDependencies": {
     "rescript": "12.1.0",
     "@rescript/runtime": "^12.1.0",
