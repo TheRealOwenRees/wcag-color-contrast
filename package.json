@@ -32,7 +32,7 @@
     "res:clean": "rescript clean",
     "res:dev": "rescript watch",
     "bundle": "esbuild src/WcagColorContrast.res.mjs --bundle --minify --format=esm --platform=node --target=node22 --outfile=dist/index.mjs",
-    "build": "npm run res:clean && npm run res:build && npm run bundle"
+    "build": "pnpm run res:clean && pnpm run res:build && pnpm run bundle"
   },
   "devDependencies": {
     "rescript": "12.1.0",

@@ -11,22 +11,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.5
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
+          cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Compile ReScript
-        run: npm run build
+        run: pnpm run build
 
       - name: Run tests
-        run: npm run test
+        run: pnpm run test
 
       - name: Publish to NPM
-        run: npm publish
+        run: pnpm publish --no-git-checks
 
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
