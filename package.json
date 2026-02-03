@@ -20,7 +20,7 @@
     "res:build": "rescript",
     "res:clean": "rescript clean",
     "res:dev": "rescript watch",
-    "bundle": "esbuild src/WcagColorContrast.res.mjs --bundle --minify --format=esm --outfile=dist/index.js",
+    "bundle": "esbuild src/WcagColorContrast.res.mjs --bundle --minify --format=esm --outfile=dist/index.mjs",
     "build": "npm run res:clean && npm run res:build && npm run bundle"
   },
   "keywords": [
