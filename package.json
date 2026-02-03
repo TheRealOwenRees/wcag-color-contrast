@@ -4,16 +4,16 @@
   "description": "WCAG color contrast compliancy checker",
   "author": "Owen Rees <owenrees@tutanota.com>",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
-    "./dist/index.js",
+    "./dist/index.mjs",
     "README.md"
   ],
   "keywords": [
