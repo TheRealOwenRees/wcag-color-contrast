@@ -65,11 +65,11 @@ WCAG.toRgba("#00000080"); // "rgba(0, 0, 0, 0.5)"
 
 ## API Reference
 
-| Function           | Parameters                       | Returns | Description                                   |
-| ------------------ | -------------------------------- | ------- | --------------------------------------------- |
-| `getContrastRatio` | (color1: string, color2: string) | number  | Calculates ratio between 1.0 and 21.0         |
-| `isCompliant`      | (ratio: number, isLarge?: bool)  | object  | Returns { WCAG 2.x: { AAA: bool, AA: bool } } |
-| `toRgba`           | (hex: string)                    | string  | Converts hex to rgba() format.                |
+| Function           | Parameters                              | Returns | Description                                   |
+| ------------------ | --------------------------------------- | ------- | --------------------------------------------- |
+| `getContrastRatio` | (color1: string, color2: string)        | number  | Calculates ratio between 1.0 and 21.0         |
+| `isCompliant`      | (ratio: number, fontSize?, bold?: bool) | object  | Returns { WCAG 2.x: { AAA: bool, AA: bool } } |
+| `toRgba`           | (hex: string)                           | string  | Converts hex to rgba() format.                |
 
 ## Development Installation
 
@@ -84,5 +84,3 @@ It is recommended to use the build and test on change scripts in two separate te
 - Build on change: `npm run res:dev`
 - Test on change: `npm run test:watch`
 - Build: `npm run res:build`
-
-## Smoke Test
