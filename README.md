@@ -4,6 +4,12 @@
 
 ## Usage
 
+### Prerequisites
+
+[Node.js >= 22.x](https://nodejs.org/en/download): This project leverages modern ESM features and ReScript generated patterns that perform best on recent V8 engines.
+
+This package is emitted as ES Modules (ESM) using the .mjs extension. Ensure your environment supports ESM or use a dynamic import() if calling from a CommonJS file.
+
 ### Installation
 
 ```sh
