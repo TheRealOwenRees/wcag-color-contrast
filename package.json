@@ -1,6 +1,6 @@
 {
   "name": "wcag-color-contrast",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "WCAG color contrast compliancy checker",
   "author": "Owen Rees <owenrees@tutanota.com>",
   "license": "MIT",
