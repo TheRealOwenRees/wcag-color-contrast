@@ -8,13 +8,13 @@
 
 [Node.js >= 22.x](https://nodejs.org/en/download): This project leverages modern ESM features and ReScript generated patterns that perform best on recent V8 engines.
 
+[PNPM >= 9](https://pnpm.io/): PNPM is a fast, disk space efficient package manager.
+
 This package is emitted as ES Modules (ESM) using the .mjs extension. Ensure your environment supports ESM or use a dynamic import() if calling from a CommonJS file.
 
 ### Installation
 
 ```sh
-npm install wcag-color-contrast
-# or
 pnpm add wcag-color-contrast
 ```
 
@@ -81,6 +81,6 @@ pnpm install
 
 It is recommended to use the build and test on change scripts in two separate terminal windows.
 
-- Build on change: `npm run res:dev`
-- Test on change: `npm run test:watch`
-- Build: `npm run res:build`
+- Build on change: `pnpm run res:dev`
+- Test on change: `pnpm run test:watch`
+- Build: `pnpm run res:build`

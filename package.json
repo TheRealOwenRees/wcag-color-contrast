@@ -26,6 +26,7 @@
     "node": "^22"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "res:build": "rescript",
