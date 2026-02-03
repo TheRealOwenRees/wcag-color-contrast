@@ -23,7 +23,8 @@
     "contrast"
   ],
   "engines": {
-    "node": "^22"
+    "node": ">=22",
+    "pnpm": ">=9"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
