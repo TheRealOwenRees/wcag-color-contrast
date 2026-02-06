@@ -45,3 +45,13 @@ let clampNoise = (ybg, ytxt, s) => {
     s *. rScale
   }
 }
+
+let getSapc = c => {
+  if Math.abs(c) < pOut {
+    0.0
+  } else if c > 0.0 {
+    c -. wOffset
+  } else {
+    c +. wOffset
+  }
+}

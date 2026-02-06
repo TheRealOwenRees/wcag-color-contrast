@@ -42,7 +42,8 @@ let getAPCA = (background, foreground) => {
 
   let c = APCA.clampNoise(ybg, ytxt, perceptualLightnessDifference)
 
-  c
+  let sapc = APCA.getSapc(c)
+  sapc *. 100.
 }
 
 // return an object of bools showing AAA and AA compliance
