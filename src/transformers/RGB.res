@@ -47,9 +47,9 @@ let toLinearRGB = (rgb: option<Types.normalizedRgbObj>): option<Types.normalized
 let relativeLuminance = (rgb: option<Types.normalizedRgbObj>) => {
   let rgbObj = rgb->Option.getOr({r: 1.0, g: 1.0, b: 1.0})
 
-  let rWeight = 0.2126
-  let gWeight = 0.7152
-  let bWeight = 0.0722
+  let rWeight = 0.2126729
+  let gWeight = 0.7151522
+  let bWeight = 0.0721750
 
   let r = rWeight * rgbObj.r
   let g = gWeight * rgbObj.g

@@ -26,12 +26,12 @@ describe("Color ratio", () => {
     let contrastRatio = getContrastRatio(black, white)
 
     switch contrastRatio {
-    | 21.0 => ()
-    | _ => throw(Failure("Expected 1.0 contrast ratio"))
+    | contrastRatio if Math.abs(contrastRatio -. 21.0) < 0.01 => ()
+    | _ => throw(Failure("Expected 21.0 contrast ratio, got " ++ Float.toString(contrastRatio)))
     }
   })
 
-  test("Black and white", () => {
+  test("Blue and white", () => {
     let black = "#0000ff"
     let white = "#ffffff"
 
