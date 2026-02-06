@@ -3,6 +3,7 @@
 - Add this changelog
 - Add GitHub repository to package.json
 - Pass background colour as argument when flattening foreground sRGB
+- additional tests
 
 ## v0.0.2
 
