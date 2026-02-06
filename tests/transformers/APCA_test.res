@@ -23,7 +23,7 @@ describe("Y - Relative Luminance", () => {
 
 describe("Soft clamp Y black levels", () => {
   test("Below threshold", () => {
-    let result = getClampY(0.0211)
+    let result = clampY(0.0211)
     switch result {
     | result if Math.abs(result -. 0.0211) < 0.01 => ()
     | _ => throw(Failure("Expected " ++ Float.toString(result)))
@@ -31,7 +31,7 @@ describe("Soft clamp Y black levels", () => {
   })
 
   test("Over threshold", () => {
-    switch getClampY(0.0231) {
+    switch clampY(0.0231) {
     | 0.0231 => ()
     | _ => throw(Failure("Expected 0.0231"))
     }

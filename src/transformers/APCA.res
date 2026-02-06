@@ -7,6 +7,15 @@ let bThresh = 0.022
 let pIn = 0.0005
 let pOut = 0.1
 
+// soft clamp black levels
+let clampY = yc => {
+  if yc >= bThresh {
+    yc
+  } else {
+    yc + (bThresh -. yc) ** bExp
+  }
+}
+
 // y = relative luminance
 let getFlattenedBackground = rgbaObj => rgbaObj->Helpers.getFlatNrgb
 
@@ -19,11 +28,11 @@ let getYbg = (rgbaObj, ~mode=RGB.Precision) =>
 let getYtxt = (rgbaObj, bgRgbObj, ~mode=RGB.Precision) =>
   rgbaObj->getFlattenedText(bgRgbObj)->Helpers.getRelativeLuminance(~mode)
 
-// soft clamp black levels
-let getClampY = yc => {
-  if yc >= bThresh {
-    yc
+// sNorm / sRev
+let getPerceptualLightnessDifference = (ybg, ytxt) => {
+  if ybg > ytxt {
+    ybg ** 0.56 -. ytxt ** 0.57
   } else {
-    yc + (bThresh -. yc) ** bExp
+    ybg ** 0.65 -. ytxt ** 0.62
   }
 }

@@ -31,6 +31,17 @@ let getContrastRatio = (background, foreground) => {
   max /. min
 }
 
+let getAPCA = (background, foreground) => {
+  let bgRgbaObj = background->toRgba
+  let fgRgbaObj = foreground->toRgba
+
+  let ybg = APCA.getYbg(bgRgbaObj)->APCA.clampY
+  let ytxt = APCA.getYtxt(fgRgbaObj, bgRgbaObj->APCA.getFlattenedBackground)->APCA.clampY
+
+  let perceptualLightnessDifference = APCA.getPerceptualLightnessDifference(ybg, ytxt)
+  perceptualLightnessDifference
+}
+
 // return an object of bools showing AAA and AA compliance
 let isCompliant = (~ratio, ~fontSize=16, ~bold=false) => {
   let largeText = fontSize >= 24 || (fontSize >= 18 && bold)
