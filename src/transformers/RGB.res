@@ -1,3 +1,7 @@
+type linearizationMode =
+  | Piecewise
+  | Precision
+
 let rgbaToNormalized = (rgba: option<Types.rgbaObj>): option<Types.normalizedRgbaObj> => {
   let rgbaObj = rgba->Option.getOr({r: 0, g: 0, b: 0, a: 1.0})
 
@@ -25,7 +29,9 @@ let flattenAlpha = (
 }
 
 // flattened alpha normalized RGB to linear lRGB
-let toLinearRGB = (rgb: option<Types.normalizedRgbObj>): option<Types.normalizedRgbObj> => {
+let toLinearRGB = (rgb: option<Types.normalizedRgbObj>, ~mode=Piecewise): option<
+  Types.normalizedRgbObj,
+> => {
   let calculateLinearPart = (c: float) => {
     if c <= 0.04045 {
       c /. 12.92
@@ -37,9 +43,9 @@ let toLinearRGB = (rgb: option<Types.normalizedRgbObj>): option<Types.normalized
   let rgbObj = rgb->Option.getOr({r: 0.0, g: 0.0, b: 0.0})
 
   Some({
-    r: calculateLinearPart(rgbObj.r),
-    g: calculateLinearPart(rgbObj.g),
-    b: calculateLinearPart(rgbObj.b),
+    r: mode == Precision ? rgbObj.r ** 2.4 : calculateLinearPart(rgbObj.r),
+    g: mode == Precision ? rgbObj.g ** 2.4 : calculateLinearPart(rgbObj.g),
+    b: mode == Precision ? rgbObj.b ** 2.4 : calculateLinearPart(rgbObj.b),
   })
 }
 
