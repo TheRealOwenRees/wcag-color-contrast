@@ -22,7 +22,7 @@ let toRgba = s => {
 let getContrastRatio = (background, foreground) => {
   let bgFlattened = background->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha
   let fgFlattened =
-    foreground->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha(~backgroundColor=?bgFlattened)
+    foreground->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha(~backgroundColorObj=bgFlattened)
   let l1 = bgFlattened->RGB.toLinearRGB->RGB.relativeLuminance
   let l2 = fgFlattened->RGB.toLinearRGB->RGB.relativeLuminance
 
