@@ -36,3 +36,12 @@ let getPerceptualLightnessDifference = (ybg, ytxt) => {
     ybg ** 0.65 -. ytxt ** 0.62
   }
 }
+
+// camp noise and then scale
+let clampNoise = (ybg, ytxt, s) => {
+  if Math.abs(ybg -. ytxt) <= pIn {
+    0.0
+  } else {
+    s *. rScale
+  }
+}

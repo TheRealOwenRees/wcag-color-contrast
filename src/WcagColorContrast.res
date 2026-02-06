@@ -39,7 +39,10 @@ let getAPCA = (background, foreground) => {
   let ytxt = APCA.getYtxt(fgRgbaObj, bgRgbaObj->APCA.getFlattenedBackground)->APCA.clampY
 
   let perceptualLightnessDifference = APCA.getPerceptualLightnessDifference(ybg, ytxt)
-  perceptualLightnessDifference
+
+  let c = APCA.clampNoise(ybg, ytxt, perceptualLightnessDifference)
+
+  c
 }
 
 // return an object of bools showing AAA and AA compliance
