@@ -24,7 +24,9 @@
     "rescript",
     "wcag",
     "color",
-    "contrast"
+    "contrast",
+    "accessibility",
+    "wcag3"
   ],
   "engines": {
     "node": ">=22",
@@ -41,7 +43,7 @@
     "build": "pnpm run res:clean && pnpm run res:build && pnpm run bundle"
   },
   "devDependencies": {
-    "rescript": "12.1.0",
+    "rescript": "^12.1.0",
     "@rescript/runtime": "^12.1.0",
     "esbuild": "^0.27.2",
     "vitest": "^4.0.18"

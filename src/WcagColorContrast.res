@@ -20,11 +20,11 @@ let toRgba = s => {
 
 // check 2 colours and compare for luminance figure
 let getContrastRatio = (background, foreground) => {
-  let bgFlattened = background->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha
-  let fgFlattened =
-    foreground->toRgba->RGB.rgbaToNormalized->RGB.flattenAlpha(~backgroundColorObj=bgFlattened)
-  let l1 = bgFlattened->RGB.toLinearRGB->RGB.relativeLuminance
-  let l2 = fgFlattened->RGB.toLinearRGB->RGB.relativeLuminance
+  let bgFlattened = background->toRgba->Helpers.getFlatNrgb
+  let fgFlattened = foreground->toRgba->Helpers.getFlatNrgb(~backgroundColorObj=bgFlattened)
+
+  let l1 = Helpers.getRelativeLuminance(bgFlattened)
+  let l2 = Helpers.getRelativeLuminance(fgFlattened)
 
   let max = Math.max(l1, l2) +. 0.05
   let min = Math.min(l1, l2) +. 0.05
