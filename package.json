@@ -1,8 +1,12 @@
 {
   "name": "wcag-color-contrast",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "WCAG color contrast compliancy checker",
   "author": "Owen Rees <owenrees@tutanota.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheRealOwenRees/wcag-color-contrast"
+  },
   "license": "MIT",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
