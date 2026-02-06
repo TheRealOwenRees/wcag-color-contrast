@@ -31,6 +31,7 @@ let getContrastRatio = (background, foreground) => {
   max /. min
 }
 
+// Lightness contrast for WCAG 3
 let getAPCA = (background, foreground) => {
   let bgRgbaObj = background->toRgba
   let fgRgbaObj = foreground->toRgba

@@ -43,3 +43,40 @@ describe("Color ratio", () => {
     }
   })
 })
+
+describe("APCA Lightness Contrast", () => {
+  let isClose = (a, b) => Math.abs(a -. b) < 1.
+
+  test("White bg / Black text", () => {
+    let white = "#ffffff"
+    let black = "#000000"
+    let result = getAPCA(white, black)
+
+    switch result {
+    | result if isClose(result, 106.) => ()
+    | _ => throw(Failure("Expected 106.0 contrast ratio, got " ++ Float.toString(result)))
+    }
+  })
+
+  test("Black bg / White text", () => {
+    let white = "#ffffff"
+    let black = "#000000"
+    let result = getAPCA(black, white)
+
+    switch result {
+    | result if isClose(result, -107.) => ()
+    | _ => throw(Failure("Expected -107.0 contrast ratio, got " ++ Float.toString(result)))
+    }
+  })
+
+  test("White bg / Blue text", () => {
+    let white = "#ffffff"
+    let blue = "#0000ff"
+    let result = getAPCA(white, blue)
+
+    switch result {
+    | result if isClose(result, 85.8) => ()
+    | _ => throw(Failure("Expected 85.8 contrast ratio, got " ++ Float.toString(result)))
+    }
+  })
+})
