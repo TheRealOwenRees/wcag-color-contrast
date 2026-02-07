@@ -11,5 +11,10 @@
   },
   "suffix": ".res.mjs",
   "dependencies": [],
-  "compiler-flags": []
+  "compiler-flags": [],
+  "gentypeconfig": {
+    "module": "esmodule",
+    "moduleResolution": "node",
+    "generatedFileExtension": ".gen.ts"
+  }
 }
