@@ -1,5 +1,4 @@
 // Entrypoint
-type isCompliantObj = {"WCAG 2.x": {"AAA": bool, "AA": bool}}
 
 // return an rgba color object for passed in colour data
 let toRgba = s => {
@@ -18,7 +17,7 @@ let toRgba = s => {
   }
 }
 
-// check 2 colours and compare for luminance figure
+// WCGA 2 - simple contrast ratio
 let getContrastRatio = (background, foreground) => {
   let bgFlattened = background->toRgba->Helpers.getFlatNrgb
   let fgFlattened = foreground->toRgba->Helpers.getFlatNrgb(~backgroundColorObj=bgFlattened)
@@ -31,8 +30,8 @@ let getContrastRatio = (background, foreground) => {
   max /. min
 }
 
-// Lightness contrast for WCAG 3
-let getAPCA = (background, foreground) => {
+// WCAG 3 - Lightness contrast
+let getLc = (background, foreground) => {
   let bgRgbaObj = background->toRgba
   let fgRgbaObj = foreground->toRgba
 
@@ -48,8 +47,8 @@ let getAPCA = (background, foreground) => {
 }
 
 // return an object of bools showing AAA and AA compliance
-let isCompliant = (~ratio, ~fontSize=16, ~bold=false) => {
-  let largeText = fontSize >= 24 || (fontSize >= 18 && bold)
+let isCompliant = (~ratio, ~fontSize=16, ~isBold=false, ~fontWeight=500) => {
+  let largeText = fontSize >= 24 || (fontSize >= 18 && isBold)
 
   let aaa = ratio >= 7.0 || (ratio >= 4.5 && largeText)
   let aa = ratio >= 4.5 || (ratio >= 3.0 && largeText)

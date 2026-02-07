@@ -30,3 +30,17 @@ type colorValueObj = {
   format: colorFormat,
   value: colorValue,
 }
+
+type wcag3Conformance = {
+  bronze: bool,
+  silver: bool,
+  gold: bool,
+}
+
+type wcag3Result = {
+  lc: float,
+  levels: wcag3Conformance,
+  category: string,
+}
+
+type isCompliantObj = {"WCAG 2.x": {"AAA": bool, "AA": bool}}

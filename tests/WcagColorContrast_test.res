@@ -50,7 +50,7 @@ describe("APCA Lightness Contrast", () => {
   test("White bg / Black text", () => {
     let white = "#ffffff"
     let black = "#000000"
-    let result = getAPCA(white, black)
+    let result = getLc(white, black)
 
     switch result {
     | result if isClose(result, 106.) => ()
@@ -61,7 +61,7 @@ describe("APCA Lightness Contrast", () => {
   test("Black bg / White text", () => {
     let white = "#ffffff"
     let black = "#000000"
-    let result = getAPCA(black, white)
+    let result = getLc(black, white)
 
     switch result {
     | result if isClose(result, -107.) => ()
@@ -72,7 +72,7 @@ describe("APCA Lightness Contrast", () => {
   test("White bg / Blue text", () => {
     let white = "#ffffff"
     let blue = "#0000ff"
-    let result = getAPCA(white, blue)
+    let result = getLc(white, blue)
 
     switch result {
     | result if isClose(result, 85.8) => ()
